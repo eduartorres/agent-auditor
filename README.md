@@ -1,6 +1,6 @@
 # Agente Auditor — AI Governance para Decisiones Autónomas
 
-![CI](https://github.com/<tu-usuario>/agent-auditor/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/eduartorres/agent-auditor/actions/workflows/ci.yml/badge.svg)
 
 Sistema de auditoría automatizada diseñado para evaluar las decisiones de un agente de IA
 en tiempo real, garantizando el cumplimiento de reglas de negocio, límites normativos y
