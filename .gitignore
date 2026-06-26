@@ -1,0 +1,15 @@
+# Mac
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+
+# Output generado en ejecucion
+output/reporte_auditoria.json
+
+# Modelos descargados por sentence-transformers
+~/.cache/huggingface/

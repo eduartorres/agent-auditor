@@ -1,0 +1,38 @@
+name: Auditor CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  ejecutar-auditor:
+    name: Ejecutar Agente Auditor contra casos de prueba
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar auditor sobre los 4 casos de prueba
+        working-directory: src
+        run: python auditor.py
+
+      - name: Verificar que el reporte fue generado
+        run: |
+          if [ ! -f output/reporte_auditoria.json ]; then
+            echo "ERROR: El reporte de auditoria no fue generado"
+            exit 1
+          fi
+          echo "Reporte generado correctamente"
+          cat output/reporte_auditoria.json

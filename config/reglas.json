@@ -1,0 +1,54 @@
+{
+  "_comentario": "Archivo de configuración central del Agente Auditor. Contiene los umbrales, límites y palabras clave que gobiernan las reglas de negocio. Modificar este archivo es suficiente para actualizar el comportamiento del auditor sin tocar el código fuente.",
+
+  "limites_cobertura": {
+    "cristales_auto": {
+      "cobertura_maxima_usd": 1200,
+      "deducible_porcentaje": 0.10,
+      "descripcion": "Cobertura máxima para rotura de cristales bajo póliza Global Auto"
+    },
+    "vida_individual_emision_automatica": {
+      "monto_maximo_usd": 80000,
+      "edad_limite": 60,
+      "descripcion": "Límite de emisión automática para pólizas de vida. Montos superiores o asegurados mayores de 60 años requieren exámenes médicos obligatorios"
+    }
+  },
+
+  "alertas_criticas": {
+    "palabras_clave_bloqueo": [
+      "ALERTA_LISTA_RESTRICTIVA",
+      "SARLAFT",
+      "AML",
+      "Bloquear de inmediato",
+      "listas de prevención de lavado de activos"
+    ],
+    "descripcion": "Cualquier coincidencia con estas palabras en el contexto RAG debe generar un bloqueo automático e irrefutable de la transacción"
+  },
+
+  "alertas_riesgo": {
+    "siniestros_recientes": {
+      "umbral_siniestros": 3,
+      "ventana_dias": 30,
+      "palabras_clave": [
+        "historial de",
+        "siniestros reportados",
+        "bajo sospecha de abuso",
+        "Cuenta bajo sospecha"
+      ],
+      "descripcion": "Cuentas con múltiples siniestros en ventana corta deben ser derivadas a revisión manual, nunca procesadas automáticamente"
+    }
+  },
+
+  "umbrales_fidelidad": {
+    "score_minimo_aceptable": 0.5,
+    "score_alerta": 0.3,
+    "descripcion": "Puntajes por debajo de 0.5 indican baja consistencia semántica entre el contexto normativo y la acción del agente. Por debajo de 0.3 se considera falla crítica"
+  },
+
+  "estados_transaccion": {
+    "aprobado": "APROBADO - Sin observaciones",
+    "aprobado_con_alerta": "APROBADO CON ALERTA - Requiere revisión",
+    "rechazado": "RECHAZADO - Violación de regla de negocio",
+    "bloqueado": "BLOQUEADO - Violación crítica de cumplimiento"
+  }
+}
