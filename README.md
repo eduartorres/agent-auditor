@@ -81,7 +81,7 @@ agent-auditor/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/<tu-usuario>/agent-auditor.git
+git clone https://github.com/eduartorres/agent-auditor.git
 cd agent-auditor
 
 # Instalar dependencias
